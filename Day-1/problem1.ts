@@ -1,22 +1,27 @@
 import * as fs from "fs";
 
+// Read the content of the file and create a array containing all data, splitted by a new line (\n)
 const input = fs.readFileSync("Day-1/input.txt", "utf-8");
-const elves = input.split("\n");
+const elvesInventory = input.split("\n");
 
+// Create variables for the highest amount of candy and a variable to hold the amount of candy he holds
 let highest = 0;
-let temp = 0;
+let amountOfCandy = 0;
 
-elves.forEach((food) => {
-    
+
+elvesInventory.forEach((food) => {
+    // If we arrive at a empty line, we check if the amount of candy is higher then the highest and reset the variable
     if (food == "\r") {
-        if (temp > highest) {
-            highest = temp;
+        if (amountOfCandy > highest) {
+            highest = amountOfCandy;
         }
-        temp = 0;
+        amountOfCandy = 0;
     } else {
+        // Trim the string so we can convert it to a integer and add it to the current holder
         const value = food.trim();
-        temp += parseInt(value);
+        amountOfCandy += parseInt(value);
     }
 });
 
+// Return the highest amount
 console.log("Result: ", highest);
