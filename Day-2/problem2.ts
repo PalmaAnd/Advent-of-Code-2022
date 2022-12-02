@@ -1,6 +1,6 @@
 import * as fs from "fs";
 
-const input = fs.readFileSync("Day-2/example.txt", "utf-8");
+const input = fs.readFileSync("Day-2/input.txt", "utf-8");
 const shapes = input.split("\n");
 
 let playedHand = [];
@@ -9,8 +9,6 @@ let playerPoints = 0;
 let elfPoints = 0;
 
 shapes.forEach((shape) => {
-    console.log(shape);
-    console.log("=======================");
     
     let playerRoundPoints = 0;
     let elfRoundPoints = 0;
@@ -24,14 +22,14 @@ shapes.forEach((shape) => {
     if (elfRoundPoints == playerRoundPoints) {
         elfRoundPoints += 3;
         playerRoundPoints += 3;
-    } else if (playedHand[0] == 'A' && playedHand[1] == 'Y'){
+    } else if (playedHand[0] == 'A' && playedHand[1] == 'Y'
+        || playedHand[0] == 'B' && playedHand[1] == 'Z'
+        || playedHand[0] == 'C' && playedHand[1] == 'X'
+    ){
         playerPoints += 6;
     } else {
         elfPoints += 6;
     }
-
-    console.log(elfRoundPoints);
-    console.log(playerRoundPoints);
 
     elfPoints += elfRoundPoints;
     playerPoints += playerRoundPoints;
