@@ -9,5 +9,5 @@
     "exclude": [
         "node_modules"
     ],
-    "include": ["Day-1/**/*"]
+    "include": ["Day-2/**/*"]
 }
