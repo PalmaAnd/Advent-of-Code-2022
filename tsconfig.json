@@ -9,5 +9,5 @@
     "exclude": [
         "node_modules"
     ],
-    "include": ["Day-2/**/*"]
+    "include": ["src/**/*"]
 }
