@@ -1,7 +1,7 @@
 import * as fs from "fs";
 
 // Read the content of the file and create a array containing all data, splitted by a new line (\n)
-const input = fs.readFileSync("Day-1/input.txt", "utf-8");
+const input = fs.readFileSync("src/Day-1/input.txt", "utf-8");
 const elves = input.split("\n");
 
 // Create an empty array which will hold all the data (not the best way to do it)

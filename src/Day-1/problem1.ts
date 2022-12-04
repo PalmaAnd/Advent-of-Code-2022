@@ -1,7 +1,7 @@
 import * as fs from "fs";
 
 // Read the content of the file and create a array containing all data, splitted by a new line (\n)
-const input = fs.readFileSync("Day-1/input.txt", "utf-8");
+const input = fs.readFileSync("src/Day-1/input.txt", "utf-8");
 const elvesInventory = input.split("\n");
 
 // Create variables for the highest amount of candy and a variable to hold the amount of candy he holds
