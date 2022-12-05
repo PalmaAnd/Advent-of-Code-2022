@@ -30,3 +30,13 @@ jobs:
           close-previous: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v2
+  run_tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run script file
+      run: |
+        chmod +x ./.github/setupDay.sh
+        ./.github/setupDay.sh
+      shell: bash
