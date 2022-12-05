@@ -9,6 +9,8 @@ create_folder_and_files() {
         mkdir "src/Day-$DAY"
         touch "src/Day-$DAY/input.txt"
         touch "src/Day-$DAY/example.txt"
+        touch "src/Day-$DAY/problem$DAY.ts"
+        touch "src/Day-$DAY/problem$DAY-b.ts"
     fi
 }
 
