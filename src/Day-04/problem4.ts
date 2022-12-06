@@ -1,6 +1,6 @@
 import * as fs from "fs";
 
-const input = fs.readFileSync("src/Day-4/example.txt", "utf-8");
+const input = fs.readFileSync("src/Day-04/input.txt", "utf-8");
 const sections = input.split("\n");
 
 let result = 0;
@@ -9,27 +9,23 @@ let elfA, elfB;
 
 // Circle trough all entries of the list
 sections.forEach((section) => {
-
     section = section.replace("\r", "");
 
-    elfA = section.split(',')[0].split('-');
-    
-    elfB = section.split(',')[1].split('-');
+    elfA = section.split(",")[0].split("-");
 
-    
-    
-    if ((elfA[0] <= elfB[0] && elfA[1] >= elfB[1])
-        || (elfB[0] <= elfA[0] && elfB[1] >= elfA[1])) {
-            console.log(elfB[0] + " smaller " + elfA[0]);
-            console.log(elfB[1] + " bigger " + elfA[1]);
-            console.log(elfB[1] >= elfA[1]);
-            console.log("======");
-            
+    elfB = section.split(",")[1].split("-");
+
+    if (
+        parseInt(elfA[0]) <= parseInt(elfB[0]) &&
+        parseInt(elfA[1]) >= parseInt(elfB[1])
+    ) {
+        result++;
+    } else if (
+        parseInt(elfB[0]) <= parseInt(elfA[0]) &&
+        parseInt(elfB[1]) >= parseInt(elfA[1])
+    ) {
         result++;
     }
-    
-    
 });
 
 console.log(result);
-

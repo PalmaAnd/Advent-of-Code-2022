@@ -1,6 +1,6 @@
 import * as fs from "fs";
 
-const input = fs.readFileSync("src/Day-3/input.txt", "utf-8");
+const input = fs.readFileSync("src/Day-03/input.txt", "utf-8");
 const rucksacks = input.split("\n");
 
 // Generate an array with all letters to later read out the index of it

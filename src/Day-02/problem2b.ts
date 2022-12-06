@@ -1,6 +1,6 @@
 import * as fs from "fs";
 
-const input = fs.readFileSync("src/Day-2/input.txt", "utf-8");
+const input = fs.readFileSync("src/Day-02/input.txt", "utf-8");
 const shapes = input.split("\n");
 
 let playedHand = [];
