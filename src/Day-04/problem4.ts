@@ -11,16 +11,18 @@ let elfA, elfB;
 sections.forEach((section) => {
     section = section.replace("\r", "");
 
+    // Split each second into two parts
     elfA = section.split(",")[0].split("-");
-
     elfB = section.split(",")[1].split("-");
 
+    // Check if elfB is completly covered by elfA
     if (
         parseInt(elfA[0]) <= parseInt(elfB[0]) &&
         parseInt(elfA[1]) >= parseInt(elfB[1])
     ) {
         result++;
     } else if (
+        // Check if elfA is completly covered by elfB
         parseInt(elfB[0]) <= parseInt(elfA[0]) &&
         parseInt(elfB[1]) >= parseInt(elfA[1])
     ) {

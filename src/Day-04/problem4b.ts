@@ -12,7 +12,6 @@ sections.forEach((section) => {
     section = section.replace("\r", "");
 
     elfA = section.split(",")[0].split("-");
-
     elfB = section.split(",")[1].split("-");
 
     if (
@@ -26,11 +25,13 @@ sections.forEach((section) => {
     ) {
         result++;
     } else if (
+        // Check if elfB is partly covered by elfA
         parseInt(elfB[0]) <= parseInt(elfA[0]) &&
         parseInt(elfB[1]) >= parseInt(elfA[0])
     ) {
         result++;
     } else if (
+        // Check if elfA is partly covered by elfB
         parseInt(elfA[0]) <= parseInt(elfB[0]) &&
         parseInt(elfA[1]) >= parseInt(elfB[0])
     ) {
