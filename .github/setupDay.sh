@@ -21,10 +21,15 @@ create_folder_and_files_automated() {
     if [ ! -d "src/Day-$today" ]
     then
         mkdir "src/Day-$today"
+        echo "Create src/Day-$today"
         touch "src/Day-$today/input.txt"
+        echo "Create src/Day-$today/input.txt"
         touch "src/Day-$today/example.txt"
+        echo "Create src/Day-$today/example.txt"
         touch "src/Day-$today/problem$today.ts"
+        echo "Create src/Day-$today/problem1.txt"
         touch "src/Day-$today/problem$today-b.ts"
+        echo "Create src/Day-$today/problem2.txt"
     fi
 }
 

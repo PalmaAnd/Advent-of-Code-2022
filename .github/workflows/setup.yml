@@ -19,7 +19,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - name: Create team sync issue
+      - name: Create daily issue
         uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
         with:
           assignees: "PalmaAnd"
@@ -31,7 +31,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v2
-  run_tests:
+  run_script:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
