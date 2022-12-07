@@ -31,13 +31,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v2
-  run_script:
+  setup_new_day:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Run script file
+    - name: Setup new Day folder and files
       run: |
-        today = today="$(date +'%d')"
+        today="$(date +'%d')"
         mkdir "src/Day-$today"
         touch "src/Day-$today/input.txt"
         touch "src/Day-$today/example.txt"
