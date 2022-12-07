@@ -15,7 +15,6 @@ const stack = createStacks(givenStacks);
 const commands = trimCommands(givenCommands);
 
 commands.forEach(command => {
-    console.log(command);
     moveItems(stack, command.move, command.from, command.to);   
 });
 
@@ -94,8 +93,12 @@ function trimCommands(commands:string){
 
 // Function used to move items between stacks
 function moveItems(currentStack:object, move:number, from:number, to:number) {
-    for (let index = 1; index < move; index++) {
-            
+    console.log(JSON.parse(JSON.stringify(currentStack)));
+    for (let index = 0; index < move; index++) {
+        const container = currentStack[from].pop();
+        currentStack[to].push(container);
     }
+    // console.log(currentStack);
     
+        
 }
