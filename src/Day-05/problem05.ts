@@ -14,9 +14,12 @@ const stack = createStacks(givenStacks);
 
 const commands = trimCommands(givenCommands);
 
-for (let i = 0; i < commands.from.length; i++) {
-    moveItem(stack, parseInt(commands.move[i]), parseInt(commands.from[i]), parseInt(commands.to[i]));   
-}
+commands.forEach(command => {
+    console.log(command);
+    moveItems(stack, command.move, command.from, command.to);   
+});
+
+
 
 
 
@@ -59,7 +62,13 @@ function createStacks(inputStacks: string):object {
 }
 
 /**
- * Helper function to create a object containing all commands as a variable
+ * Helper function to create an array containing all commands as a variable
+ * [
+        { move: 1, from: 2, to: 1 },
+        { move: 3, from: 1, to: 3 },
+        { move: 2, from: 2, to: 1 },
+        { move: 1, from: 1, to: 2 }
+    ]
  * 
  * @param commands String containing all commands
  * @returns An object with a sorted array containing all move, from, to numbers
@@ -67,32 +76,26 @@ function createStacks(inputStacks: string):object {
 function trimCommands(commands:string){
     const commandArray = commands.split("\n");
     
-    const numbers = {
-        "move": [],
-        "from": [],
-        "to": []
-
-    };
+    const numbers = [];
     
-    commandArray.forEach(command => {
-        command = command.replace('move', '')
-                        .replace('from', ',')
-                        .replace('to', ',');
-        const commandNumbers = command.split(",");
-
-        for (let index = 0; index < commandNumbers.length; index += 3) {
-            numbers.move.push(commandNumbers[index]);
-            numbers.from.push(commandNumbers[index+1]);
-            numbers.to.push(commandNumbers[index+2]);
-
-
-        }
-    });
+    for (let index = 0; index < commandArray.length; index++) {
+        const command = commandArray[index].replace('move', '')
+            .replace('from', ',')
+            .replace('to', ',').split(",");
+        numbers.push({
+            move: parseInt(command[0]),
+            from: parseInt(command[1]),
+            to: parseInt(command[2])
+        });
+    }
 
     return numbers;
 }
 
 // Function used to move items between stacks
-function moveItem(currentStack:object, move:number, from:number, to:number) {
+function moveItems(currentStack:object, move:number, from:number, to:number) {
+    for (let index = 1; index < move; index++) {
+            
+    }
     
 }
