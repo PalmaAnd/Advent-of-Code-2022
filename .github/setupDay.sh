@@ -35,5 +35,5 @@ echo "Welcome to this little script."
 echo "This script will create a folder, with the given number you give it as the ending character, or directly with the current day."
 echo "Developed by Palma Andrè."
 
-# create_folder_and_files_automated
-create_folder_and_files
+create_folder_and_files_automated
+# create_folder_and_files
