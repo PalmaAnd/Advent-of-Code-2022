@@ -1,10 +1,8 @@
 import * as fs from "fs";
 
-let result = 0;
-
 // Remove all \r for Windows and remove whitespaces and the end
 const input = fs
-    .readFileSync("src/Day-05/example.txt", "utf-8")
+    .readFileSync("src/Day-05/input.txt", "utf-8")
     .replace(/\r/g, "")
     .trimEnd();
 
@@ -14,17 +12,19 @@ const stack = createStacks(givenStacks);
 
 const commands = trimCommands(givenCommands);
 
+
 commands.forEach(command => {
     moveItems(stack, command.move, command.from, command.to);   
 });
 
+let lastElements = "";
 
+Object.entries(stack).forEach(([key, value], index) => {
+    lastElements += getLastElement(value);
+});
 
+console.log(lastElements);
 
-
-// for (const commands.values of object) {
-    
-// }
 
 /**
  * Helper function to create an object containing the given input string with the crates and their index
@@ -54,9 +54,12 @@ function createStacks(inputStacks: string):object {
                 returnStack[indexes[i]] = [];
             }
             // Use unshift to add it at the start
-            returnStack[indexes[i]].unshift(crateLine[i]);
+            if (crateLine[i] != ' ') {
+                returnStack[indexes[i]].unshift(crateLine[i]);
+            }
         }
     }
+    
     return returnStack;
 }
 
@@ -93,12 +96,12 @@ function trimCommands(commands:string){
 
 // Function used to move items between stacks
 function moveItems(currentStack:object, move:number, from:number, to:number) {
-    console.log(JSON.parse(JSON.stringify(currentStack)));
     for (let index = 0; index < move; index++) {
         const container = currentStack[from].pop();
         currentStack[to].push(container);
-    }
-    // console.log(currentStack);
-    
-        
+    }   
+}
+
+function getLastElement(givenArray:[]) {
+    return givenArray[givenArray.length-1]
 }
