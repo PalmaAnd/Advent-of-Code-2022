@@ -3,15 +3,15 @@ import * as fs from "fs";
 const MAXSIZE = 100000;
 
 const input = fs
-    .readFileSync("src/Day-07/example.txt", "utf-8")
+    .readFileSync("src/Day-07/input.txt", "utf-8")
     .replace(/\r/g, "");
 
 const commands = input.split("\n");
 
-// bei jedem cd neues Arr
-// bei jedem cd.. aus subarray gehen
-
+// Create an array were we store all directories
 let directories = [];
+
+// Create an empty directory object
 let directory = {
     name: "",
     size: 0,
@@ -19,7 +19,8 @@ let directory = {
 
 let solution = 0;
 
-// Go trough each character
+let lastDir = "";
+
 commands.forEach((element) => {
     let currentValue = element.valueOf();
 
@@ -30,15 +31,18 @@ commands.forEach((element) => {
             currentValue.indexOf("cd") + 3
         );
 
-        directories.push(directory);
-        directory = {
-            name: "",
-            size: 0,
-        };
-
-        if (currentDirectory != "..") directory.name = currentDirectory;
-        else {
-            console.log(directories);
+        if (currentDirectory != "..") {
+            directories.push(directory);
+            directory = {
+                name: lastDir + currentDirectory,
+                size: 0,
+            };
+            lastDir +=
+                currentDirectory != "/"
+                    ? currentDirectory + "/"
+                    : currentDirectory;
+        } else {
+            lastDir = "";
         }
     } else if (currentValue.match(/\d /gm)) {
         element = element.substring(0, element.indexOf(" "));
@@ -46,5 +50,21 @@ commands.forEach((element) => {
     }
 });
 
-console.log(directories);
+// Add the last directory
+directories.push(directory);
+
+for (let index = 0; index < directories.length; index++) {
+    for (let j = index + 1; j < directories.length; j++) {
+        if (directories[j].name.indexOf(directories[index].name) >= 0) {
+            directories[index].size += directories[j].size * 2;
+        }
+    }
+}
+
+for (let index = 0; index < directories.length; index++) {
+    if (directories[index].size < MAXSIZE) {
+        solution = Math.max(solution, directories[index].size);
+    }
+}
+
 console.log(solution);
