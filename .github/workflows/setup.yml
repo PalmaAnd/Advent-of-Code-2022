@@ -10,7 +10,7 @@
 name: Create Daily Issue
 on:
   schedule:
-    - cron: 00 06 * * *
+    - cron: * * * * *
 
 jobs:
   create_issue:
