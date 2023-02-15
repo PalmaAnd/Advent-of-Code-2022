@@ -12,7 +12,7 @@ git clone --depth=1 https://github.com/PalmaAnd/Advent-of-Code-2022.git
 
 ## Install dependencies
 ```
-cd <project_name>
+cd Advent-of-Code-2022
 
 npm install
 ```
