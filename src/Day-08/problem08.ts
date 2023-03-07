@@ -10,6 +10,7 @@ const rows = input.split("\n");
 
 var grid = {};
 
+// Create grid
 for (let i = 0; i < rows.length; i++) {
     grid[i] = rows[i].split("");
 }
@@ -20,16 +21,13 @@ for (let row = 1; row < rows.length; row++) {
     }
 }
 
-console.log(visibleTrees);
+console.log(visibleTrees + countEdges(rows.length));
 
 // Check all values on the left, or right
 function checkRowVisible(row:number, value:number):boolean {
     for (let column = 0; column < rows.length; column++) {
         if (grid[row][column] > value) return false;
     }
-    console.log({row});
-    console.log({value});
-    
     return true;
 }
 
@@ -38,9 +36,6 @@ function checkColumnVisible(column:number, value:number):boolean {
     for (let row = 0; row < rows.length; row++) {
         if (grid[row][column] > value) return false;
     }
-    console.log({column});
-    console.log({value});
-    
     return true;
 }
 

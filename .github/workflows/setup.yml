@@ -12,22 +12,3 @@ on:
   schedule:
     - cron: * * * * *
 
-jobs:
-  create_issue:
-    name: Issue to solve the new Advent of Code problem
-    runs-on: ubuntu-latest
-    permissions:
-      issues: write
-    steps:
-      - name: Create daily issue
-        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
-        with:
-          assignees: "PalmaAnd"
-          labels: ""
-          title: "New Day new Problem"
-          body: ""
-          pinned: false
-          close-previous: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/checkout@v2
