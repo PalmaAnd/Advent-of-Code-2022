@@ -7,8 +7,3 @@
 # To get a newer version, you will need to update the SHA.
 # You can also reference a tag or branch, but the action may change without warning.
 
-name: Create Daily Issue
-on:
-  schedule:
-    - cron: * * * * *
-
