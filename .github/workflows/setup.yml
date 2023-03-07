@@ -6,4 +6,18 @@
 # GitHub recommends pinning actions to a commit SHA.
 # To get a newer version, you will need to update the SHA.
 # You can also reference a tag or branch, but the action may change without warning.
-
+name: run-node
+run-name: Check if TypeScript can be build without issues
+on: [push]
+jobs:
+  run-ts-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install
+      - run: echo "Install dependencies"
+      - run: npm run build
+      - run: echo "Build Typescript"
