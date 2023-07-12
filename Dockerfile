@@ -1,12 +1,21 @@
-FROM node:18.11.10
+FROM node:18
 
-WORKDIR /src
+# Create app directory
+WORKDIR /src/
 
-COPY package.json package.json
-COPY package-lock.json package-lock.json
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
 
 RUN npm install
+# If you are building your code for production
+# RUN npm ci --omit=dev
 
+# Bundle app source
 COPY . .
 
-CMD [ "npm", "run", "build"]
+EXPOSE 8080
+CMD [ "npm", "run", "build" ]
+
+#run by typing: docker build . -t <name_of_image>
